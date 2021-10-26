@@ -19,13 +19,22 @@ const StackNav = () => {
                 },
                 headerTitleStyle: {
                     fontSize: 24,
-                    color: '#ffffff'
+                    // color: '#ffffff'
                 },
                 headerTitleAlign: 'center',
                 headerTintColor: '#ff6600',
-                headerTitle: ({ style }) => {
-                    return <MaterialCommunityIcons name="react" style={style}> RN</MaterialCommunityIcons>
-                }
+                headerTitle: ({ style, tintColor }) => {
+                    return <MaterialCommunityIcons name="react" style={style} color={tintColor}> RN</MaterialCommunityIcons>
+                },
+                headerBackImage: ({ tintColor }) => {
+                    return <MaterialCommunityIcons name="keyboard-backspace"
+                        size={26} color={tintColor} style={{ marginRight: 5, marginLeft: 5 }}
+                    />
+                },
+                headerBackTitle: 'Prev',
+                headerBackTitleVisible: true,
+                headerBackTitleStyle: { fontSize: 26 },
+                headerTintColor: '#ff6699'
             }}
         >
             <Stack.Screen name="List" component={List} />

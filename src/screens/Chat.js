@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../components/Button'
-import Navigation from '../navigations'
+import { MaterialIcons } from '@expo/vector-icons'
 
 const Container = styled.View`
     flex:1;
@@ -14,6 +14,32 @@ const StyledText = styled.Text`
     margin:10px;
 `
 const Chat = ({ navigation, route }) => {
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: ({ onPress, tintColor }) => {
+                return (
+                    <MaterialIcons
+                        name="chevron-left"
+                        size={30}
+                        style={{ marginLeft: 11 }}
+                        color={tintColor}
+                        onPress={onPress}
+                    />
+                )
+            },
+            headerRight: ({ tintColor }) => {
+                return (
+                    <MaterialIcons
+                        name="home"
+                        size={30}
+                        style={{ marginRight: 11 }}
+                        color={tintColor}
+                        onPress={() => navigation.popToTop()}
+                    />
+                )
+            }
+        })
+    })
     return (
         <Container>
             <StyledText>Chat</StyledText>
